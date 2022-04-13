@@ -3,22 +3,28 @@ const { Schema, model } = require('mongoose');
 // Schema to create Student model
 const userSchema = new Schema(
   {
-    first: {
+    usernmame: {
       type: String,
       required: true,
-      max_length: 50,
+      unique: true,
+      trimmed: true,
     },
-    last: {
+    email: {
       type: String,
       required: true,
-      max_length: 50,
+      unique: true,
+      validate: {
+        validator: () => Promise.resolve(false),
+        message: 'Email validation failed'
+      }
     },
-    github: {
-      type: String,
-      required: true,
-      max_length: 50,
-    },
+    thoughts:
+    // needs to reference the thought model
+      [],
+    friends: 
+      [],
   },
+  // add friend count virtual
   {
     toJSON: {
       getters: true,

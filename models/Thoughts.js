@@ -15,7 +15,7 @@ const thoughtSchema = new Schema(
     username: {
       type: string,
       required: true,
-      ref: 'Student',
+      ref: 'User',
     },
     reactions: 
       [],
@@ -49,7 +49,7 @@ module.exports = Course;
 //     username: {
 //       type: string,
 //       required: true,
-//       ref: 'Student',
+//       ref: 'User',
 //     },
 //     createdAt: {
 //       type: Date,

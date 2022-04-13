@@ -3,13 +3,48 @@ AS A social media startup
 I WANT an API for my social network that uses a NoSQL database
 SO THAT my website can handle large amounts of unstructured data
 
-Acceptance criteria
-GIVEN a social network API
-WHEN I enter the command to invoke the application
-THEN my server is started and the Mongoose models are synced to the MongoDB database
-WHEN I open API GET routes in Insomnia for users and thoughts
-THEN the data for each of these routes is displayed in a formatted JSON
-WHEN I test API POST, PUT, and DELETE routes in Insomnia
-THEN I am able to successfully create, update, and delete users and thoughts in my database
-WHEN I test API POST and DELETE routes in Insomnia
-THEN I am able to successfully create and delete reactions to thoughts and add and remove friends to a user’s friend list
+
+# Social network API 
+
+## Description
+This project contains an API that enables users, their thoughts and association with other users (friends) to be created, updated and deleted.
+
+The application contains the following:
+* Display user, thoughts and friend data
+* Create, update, and delete users and thoughts in my database
+* Create and delete reactions to thoughts and add and remove friends to a user’s friend list
+* Data saved in MongoDB
+
+## Built with
+* MongoDB
+* JavaScript
+
+## Demonstrated with
+* Insomnia
+* MongoDB Compass
+
+## Getting started
+### Prerequisites
+* Install Insomnia 
+* Instamm MongoDB Compass
+
+### Installation
+To clone the repo, follow the instructions by following the instructions at [cloning a repository](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) or follow the instructions below
+
+1. Open Terminal
+2. Change the current working directory to the location where you want the cloned directory
+3. Type git clone, and then paste the URL you copied earlier
+```
+$ git clone https://github.com/social-network-api/
+```
+4. Press Enter
+
+
+## Credits
+The author of this repo is Rachel Harris, a student of Trilogy Developer Bootcamp.
+
+## License
+MIT.
+
+## Tests
+The code in this repo is not currently covered with automated tests.

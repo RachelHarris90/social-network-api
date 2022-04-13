@@ -24,11 +24,12 @@ const userSchema = new Schema(
     friends: 
       [],
   },
-  // add friend count virtual
   {
     toJSON: {
-      getters: true,
+      virtuals: true,
+        // add friend count virtual
     },
+    id: false,
   }
 );
 

@@ -1,21 +1,5 @@
 const { User, Thought } = require('../models');
 
-// TODO: Create an aggregate function to get the number of users overall
-const headCount = async () =>
-  User.aggregate()
-    // Your code here
-    .then((numberOfusers) => numberOfusers);
-
-// TODO: Create a function that executes the aggregate method on the user model and will calculate the overall grade by using the $avg operator
-const grade = async (userId) =>
-User.aggregate([
-    {
-      $unwind: '$assignments',
-    },
-    {
-      // Your code here
-    },
-  ]);
 
 module.exports = {
   getUsers(req, res) {
@@ -78,40 +62,5 @@ module.exports = {
         console.log(err);
         res.status(500).json(err);
       });
-  },
-
-
-  addAssignment(req, res) {
-    console.log('You are adding an assignment');
-    console.log(req.body);
-    user.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $addToSet: { assignments: req.body } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res
-              .status(404)
-              .json({ message: 'No user found with that ID :(' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
-  },
-
-  removeAssignment(req, res) {
-    User.findOneAndUpdate(
-      { _id: req.params.userId },
-      { $pull: { assignment: { assignmentId: req.params.assignmentId } } },
-      { runValidators: true, new: true }
-    )
-      .then((user) =>
-        !user
-          ? res
-              .status(404)
-              .json({ message: 'No user found with that ID :(' })
-          : res.json(user)
-      )
-      .catch((err) => res.status(500).json(err));
   },
 };

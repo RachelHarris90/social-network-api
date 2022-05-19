@@ -4,12 +4,12 @@ const {
   deleteFriend,
 } = require('../../controllers/friendController.js');
 
-// /api/courses
+// /api/friends
 router.route('/').post(createFriend);
 
-// /api/courses/:courseId
+// /api/courses/:userId
 router
-  .route('/:courseId')
+  .route('/:userId')
   .delete(deleteFriend);
 
 module.exports = router;

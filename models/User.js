@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema(
   {
-    usernmame: {
+    username: {
       type: String,
       required: true,
       unique: true,
@@ -12,25 +12,29 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      validate: {
-        validator: () => Promise.resolve(false),
-        message: 'Email validation failed'
+      // validate: {
+      //   validator: () => Promise.resolve(false),
+      //   message: 'Email validation failed'
+      // }
+    },
+    thoughts: {
+      type: Schema.Types.ObjectId,
+      ref: 'thought'
+       },
+    friends: {
+      type: Schema.Types.ObjectId,
+      ref: 'user'
       }
     },
-    thoughts:
-    // needs to reference the thought model
-      [],
-    friends: 
-      [],
-  },
-  {
-    toJSON: {
-      virtuals: true,
-        // add friend count virtual
-    },
-    id: false,
-  }
+    {
+      toJSON: {
+        virtuals: true,
+      },
+      id: false,
+    }
 );
+
+userSchema
 
 const User = model('user', userSchema);
 

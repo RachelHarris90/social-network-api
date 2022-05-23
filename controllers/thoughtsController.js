@@ -1,4 +1,4 @@
-const { thought, user } = require('../models');
+const { Thought, Reaction } = require('../models');
 
 module.exports = {
   getThoughts(req, res) {
@@ -8,7 +8,7 @@ module.exports = {
   },
 
   getSingleThought(req, res) {
-    thought.findOne({ _id: req.params.thoughtId })
+    Thought.findOne({ _id: req.params.thoughtId })
       .select('-__v')
       .then((thought) =>
         !thought
@@ -19,7 +19,7 @@ module.exports = {
   },
 
   createThought(req, res) {
-    thought.create(req.body)
+    Thought.create(req.body)
       .then((thought) => res.json(thought))
       .catch((err) => {
         console.log(err);
@@ -28,7 +28,7 @@ module.exports = {
   },
 
   deleteThought(req, res) {
-    thought.findOneAndDelete({ _id: req.params.thoughtId })
+    Thought.findOneAndDelete({ _id: req.params.thoughtId })
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: 'No thought with that ID' })
@@ -39,7 +39,7 @@ module.exports = {
   },
 
   updateThought(req, res) {
-    thought.findOneAndUpdate(
+    Thought.findOneAndUpdate(
       { _id: req.params.thoughtId },
       { $set: req.body },
       { runValidators: true, new: true }
@@ -49,6 +49,25 @@ module.exports = {
           ? res.status(404).json({ message: 'No thought with this id!' })
           : res.json(thought)
       )
+      .catch((err) => res.status(500).json(err));
+  },
+  createReaction(req, res) {
+    Reaction.create(req.body)
+      .then((reaction) => res.json(reaction))
+      .catch((err) => {
+        console.log(err);
+        return res.status(500).json(err);
+      });
+  },
+
+  deleteReaction(req, res) {
+    Reaction.findOneAndDelete({ _id: req.params.reactionId })
+      .then((reaction) =>
+        !reaction
+          ? res.status(404).json({ message: 'No reaction with that ID' })
+          : user.deleteMany({ _id: { $in: reaction.user } })
+      )
+      .then(() => res.json({ message: 'Reaction and user deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
 };

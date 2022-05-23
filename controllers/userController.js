@@ -40,4 +40,23 @@ module.exports = {
         .then((user) => res.json(user))
         .catch((err) => res.status(500).json(err));
     },
+
+    createFriend(req, res) {
+      User.create(req.body)
+        .then((friend) => res.json(friend))
+        .catch((err) => {
+          console.log(err);
+          return res.status(500).json(err);
+        });
+    },
+  
+    deleteFriend(req, res) {
+      User.findOneAndDelete(
+        { _id: req.params.userId },
+        { $pull: { friends: params.friendsId } },
+        { new: true }
+      )
+        .then((user) => res.json(user))
+        .catch((err) => res.status(500).json(err));
+    },
 };

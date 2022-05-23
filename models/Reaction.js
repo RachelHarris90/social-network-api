@@ -21,8 +21,7 @@ const reactionSchema = new Schema(
   },
   {
     toJSON: {
-      virtuals: true,
-        // add friend count virtual
+      getters: true,
     },
     id: false,
   }

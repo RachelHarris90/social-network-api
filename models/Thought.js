@@ -17,30 +17,20 @@ const thoughtSchema = new Schema(
       required: true,
       ref: 'User',
     },
-    reactions: {
-      reactionBody: {
-        type: String,
-        required: true,
-        maxlength: 280,
-      },
-      username: {
-          type: String,
-          required: true,
-        },
-      createdAt: {
-      type: Date,
-      default: Date.now,
-      }
-    },
+    reactions: [ reactionSchema ],
   },
   {
     toJSON: {
       getters: true,
       virtuals: true,
-        // add reaction count virtual
     },
+    id: false,
   }
 );
+
+thoughtSchema.virtual("reactionCount").get(function () {
+  return this.reaction.length;
+});
 
 const Thought = model('thought', thoughtSchema);
 

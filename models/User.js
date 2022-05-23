@@ -12,29 +12,29 @@ const userSchema = new Schema(
       type: String,
       required: true,
       unique: true,
-      // validate: {
-      //   validator: () => Promise.resolve(false),
-      //   message: 'Email validation failed'
-      // }
+      match: [/.+@.+\..+/, 'Must match an email address!'],
     },
     thoughts: {
       type: Schema.Types.ObjectId,
-      ref: 'thought'
+      ref: 'Thought'
        },
     friends: {
       type: Schema.Types.ObjectId,
-      ref: 'user'
+      ref: 'User'
       }
     },
     {
       toJSON: {
         virtuals: true,
+        getters: true,
       },
       id: false,
     }
 );
 
-userSchema
+userSchema.virtual('friendCount').get(function () {
+  return this.friends.length;
+})
 
 const User = model('user', userSchema);
 

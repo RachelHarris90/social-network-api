@@ -33,6 +33,9 @@ $ git clone https://github.com/social-network-api/
 ```
 4. Press Enter
 
+## Demonstration
+Watch a demonstration of the application in Insomnia [here](social-network-api/assets/Demonstration.mov)
+
 
 ## Credits
 The author of this repo is Rachel Harris, a student of Trilogy Developer Bootcamp.

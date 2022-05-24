@@ -34,7 +34,7 @@ $ git clone https://github.com/social-network-api/
 4. Press Enter
 
 ## Demonstration
-Watch a demonstration of starting the server and accessing the database [here]https://drive.google.com/file/d/1rvsrnoM361CyoZEeseopR7sNPsoIaOO0/view?usp=sharing)
+Watch a demonstration of starting the server and accessing the database [here](https://drive.google.com/file/d/1rvsrnoM361CyoZEeseopR7sNPsoIaOO0/view?usp=sharing)
 Watch a demonstration of the application in Insomnia [here](https://drive.google.com/file/d/1giUJt9h4-vbXfHd4cEbDoNERC9SlVGt1/view?usp=sharing)
 
 

@@ -3,7 +3,7 @@ const { Thought, Reaction } = require('../models');
 module.exports = {
   getThoughts(req, res) {
     Thought.find()
-      .then((thoughts) => res.json(thought))
+      .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
 
@@ -34,7 +34,7 @@ module.exports = {
           ? res.status(404).json({ message: 'No thought with that ID' })
           : user.deleteMany({ _id: { $in: thought.user } })
       )
-      .then(() => res.json({ message: 'thought and user deleted!' }))
+      .then(() => res.json({ message: 'Thought deleted!' }))
       .catch((err) => res.status(500).json(err));
   },
 

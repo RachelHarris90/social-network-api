@@ -1,11 +1,16 @@
-const { User, Thought } = require('../models');
+const { User } = require('../models');
 
 module.exports = {
   getUsers(req, res) {
-    User.find()
+    User.find({})
+      .select("-__v")
       .then((user) => res.json(user))
-      .catch((err) => res.status(500).json(err));
+      .catch((err) => {
+        console.log(err);
+        res.status(500).json(err);
+      });
   },
+  
 
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
